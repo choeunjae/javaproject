@@ -38,3 +38,5 @@ https://github.com/choeunjae/javaproject.git
 	    - 매 수업마다 동일한 좌석/PC를 사용할 수 있어 작업환경을 안정적으로 유지할 수 있습니다.
 	    - 불필요한 좌석 이동 및 PC 설정 시간을 줄일 수 있습니다.
 	    - 학기 초에 좌석 선택만 해두면 수업 시간마다 별도의 준비가 필요 없습니다.
+
+![[JAVA프로그래밍1 midtermproject 순서도.png]]
