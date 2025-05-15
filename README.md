@@ -107,8 +107,7 @@ https://github.com/choeunjae/javaproject.git
 ---
 
 > 📎 _이 프로그램은 학생의 실질적인 불편을 해결하며, 공용 공간에서의 개인화된 학습 환경을 제공합니다._
-![순서도](https://github.com/choeunjae/javaproject/raw/main/Pasted%20image%2020250424121327.png)
-
+![순서도](https://github.com/choeunjae/javaproject/blob/main/image/Pasted%20image%2020250424121327.png)
 ## 📅 개발 로그 (Development Log)
 
 자세한 변경 내역은 [CHANGELOG.md](./CHANGELOG.md) 를 참고하세요.
