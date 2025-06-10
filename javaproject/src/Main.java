@@ -34,6 +34,7 @@ public class Main {
             String name = scanner.nextLine().trim();
             if (name.equalsIgnoreCase("x")) {
                 showStatistics();
+                showAllSeats();
                 break;
             }
 
@@ -64,22 +65,33 @@ public class Main {
 
             // 계속 진행 여부 확인
             while (true) {
-                System.out.print("\n계속하시려면 'a', 종료하시려면 'b' 입력: ");
-                String choice = scanner.nextLine().trim().toLowerCase();
-                if (choice.equals("a")) {
-                    break; // 다음 예약 진행
-                } else if (choice.equals("b")) {
+                System.out.println("\n다음 중 원하는 작업을 선택하세요:");
+                System.out.println("1) 전체 예약 내역 출력");
+                System.out.println("2) 프로그램 종료");
+                System.out.println("3) 다음 예약 진행");
+                System.out.print("번호 입력: ");
+                String menu = scanner.nextLine().trim();
+
+                if (menu.equals("1")) {
+                    showStatistics();   // 전체 예약 내역 출력
+
+                } else if (menu.equals("2")) {
+                    showStatistics();
                     showAllSeats();
                     scanner.close();
-                    System.exit(0);
+                    System.exit(0); // 프로그램 종료
+
+                } else if (menu.equals("3")) {
+                    break; // 다음 예약 진행
+
                 } else {
-                    System.out.println("잘못된 입력입니다!");
+                    System.out.println("잘못된 입력입니다. 다시 선택하세요.");
                 }
             }
         }
         scanner.close();
     }
-
+    
     // 강의실 선택 메서드
     private static String selectRoom(Scanner scanner) {
         boolean validRoom = false;
@@ -202,8 +214,17 @@ public class Main {
 
     // 좌석 출력 메서드
     public static void printSeats(String[][] seats) {
+        // 칠판 표시 및 열 번호 출력
+        System.out.println("        [ 칠판 ]");
+        System.out.print("   ");
+        for (int j = 1; j <= seats[0].length; j++) {
+            System.out.print(" " + j + " ");
+            if (j == 4) System.out.print("  "); // 왼쪽/오른쪽 구분
+        }
+        System.out.println();
+
         for (int i = 0; i < seats.length; i++) {
-            System.out.print((i + 1) + "줄: ");
+            System.out.print((i + 1) + " ");
             for (int j = 0; j < seats[i].length; j++) {
                 System.out.print("[" + seats[i][j] + "]");
                 if (j == 3) System.out.print("  ");
