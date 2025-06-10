@@ -1,9 +1,0 @@
-{
-  "pdfExportSettings": {
-    "includeName": false,
-    "pageSize": "Letter",
-    "landscape": false,
-    "margin": "1",
-    "downscalePercent": 100
-  }
-}
