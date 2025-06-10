@@ -44,14 +44,28 @@ public class Main {
         }
 
         // 좌석 선택 기능 추가
-        int rows = room.equals("212") ? 8 : 13;   // 212호 : 8줄, 201 202호 : 13줄
-        int cols = 4;                              // 열 4개
+        int rows, cols;
+        if (room.equals("212")) {
+            rows = 4;
+            cols = 8;
+        } else {
+            rows = 7;
+            cols = 8;
+        }
+
 
         // 2차원 배열 생성 및 초기화
         String[][] seats = new String[rows][cols];
+
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-                seats[i][j] = "O";                 // 빈 좌석 표시
+                if (room.equals("212")) {
+                    seats[i][j] = "O"; // 212호는 모두 좌석 있음
+                } else {
+                    // 201/202호: 마지막 줄(6번째 인덱스) 오른쪽 4자리는 없음("-")
+                    if (i == 6 && j >= 4) seats[i][j] = "-";
+                    else seats[i][j] = "O";
+                }
             }
         }
 
@@ -69,6 +83,14 @@ public class Main {
             int r = scanner.nextInt() - 1;
             System.out.print("예약할 열 번호(1~" + cols + "): ");
             int c = scanner.nextInt() - 1;
+
+            // 201/202호의 7번째 줄 오른쪽 네 자리 입력 시 유효하지 않음 처리
+            if (room.equals("201") || room.equals("202")) {
+                if (r == 6 && c >= 4) {
+                    System.out.println("유효하지 않은 좌석입니다. 다시 시도하세요.");
+                    continue;
+                }
+            }
 
             if (r < 0 || r >= rows || c < 0 || c >= cols) {
                 System.out.println("유효하지 않은 좌석입니다. 다시 시도하세요.");
@@ -101,7 +123,9 @@ public class Main {
         for (int i = 0; i < seats.length; i++) {
             System.out.print((i + 1) + "줄: ");
             for (int j = 0; j < seats[i].length; j++) {
-                System.out.print("[" + seats[i][j] + "] ");
+                System.out.print("[" + seats[i][j] + "]");
+                if (j == 3) System.out.print("  "); // 왼쪽4자리 오른쪽4자리 사이 공백 추가
+                else System.out.print(" ");
             }
             System.out.println();
         }
